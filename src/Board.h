@@ -1,16 +1,10 @@
 #ifndef __DCHESS_BOARD
 #define __DCHESS_BOARD
 
+#include "Coordinates.h"
 #include "Pieces.h"
 
 namespace DChess {
-  typedef const unsigned short COORD;
-
-  typedef struct {
-    COORD x;
-    COORD y;
-  } Coordinate;
-
   class Board {
     public:
       virtual void move(Coordinate source, Coordinate dest) = 0;

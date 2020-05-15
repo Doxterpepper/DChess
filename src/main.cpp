@@ -1,8 +1,7 @@
 #include <iostream>
 #include "ChessBoard.h"
+#include "GameEngine.h"
 
 int main () {
-  DChess::ChessBoard board;
-  board.move(4,6, 4,4);
-  std::cout << board.str() << std::endl;
+  DChess::GameEngine engine(new DChess::ChessBoard);
 }

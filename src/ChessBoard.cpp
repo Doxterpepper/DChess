@@ -53,22 +53,22 @@ namespace DChess {
   /**
    * Move a chess piece from source to destination. Coordinates must be within the 8x8 board.
    */
-  void ChessBoard::move(COORD sourcex, COORD sourcey, COORD destx, COORD desty) {
-    COORD source = sourcey * xdim + sourcex;
-    COORD dest = desty * xdim + sourcex;
+  void ChessBoard::move(Coordinate source, Coordinate dest) {
+    COORD computedSource = source.y * xdim + source.x;
+    COORD computedDest = dest.y * xdim + dest.x;
 
-    assert((long unsigned int)source < board.size());
-    assert((long unsigned int)dest < board.size());
+    assert((long unsigned int)computedSource < board.size());
+    assert((long unsigned int)computedDest < board.size());
     
-    board[dest] = board[source];
-    board[source] = nullptr;
+    board[computedDest] = board[computedSource];
+    board[computedSource] = nullptr;
   }
 
   /**
    * Get a chess piece at a given coordinate.
    */
-  Piece* ChessBoard::at(COORD x, COORD y) {
-    COORD position = y * xdim + x;
+  Piece* ChessBoard::at(Coordinate coordinate) {
+    COORD position = coordinate.y * xdim + coordinate.x;
     assert((long unsigned int)(position) < board.size());
     return board[position];
   }

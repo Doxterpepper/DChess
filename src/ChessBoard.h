@@ -32,13 +32,8 @@ namespace DChess {
 
       /**
        * Move pieces on the board. Replaces whatever is in the destination with the source piece.
-       *
-       * sourcex: COORD type that represents the x coordinate of the source piece.
-       * sourcey: COORD type that represents the y coordinate of the source piece.
-       * destx: COORD type that represents the x coordinate of the destination.
-       * desty: COORD type that represents the y coordinate of the destination.
        */
-      void move(COORD sourceX, COORD sourceY, COORD destX, COORD destY);
+      void move(Coordinate source, Coordinate dest);
 
       /**
        * Gets the piece at coordinate designated by x and y.
@@ -46,7 +41,7 @@ namespace DChess {
        * x: x coordinate of the board.
        * y: y coordiante of the board.
        */
-      Piece* at(COORD x, COORD y);
+      Piece* at(Coordinate coordinate);
 
       /**
        * Converts the game board to a string for printing.

@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS=-Wall -g -std=c++11
 
-dchess:  ChessBoard.o Pieces.o Colors.o src/main.cpp
+dchess:  ChessBoard.o Pieces.o Colors.o GameEngine.o src/main.cpp
 	$(CXX) $+ $(CXXFLAGS) -o $@
 
 ChessBoard.o: src/ChessBoard.cpp src/ChessBoard.h
@@ -13,8 +13,12 @@ Pieces.o: src/Pieces.cpp src/Pieces.h
 Colors.o: src/Colors.cpp src/Colors.h
 	$(CXX) $(CXXFLAGS) -c $<
 
+GameEngine.o: src/GameEngine.cpp src/GameEngine.h Pieces.o Colors.o ChessBoard.o
+	$(CXX) $(CXXFLAGS) -c $<
+
 ChessBoardTests: tests/ChessBoardTests.cpp Pieces.o Colors.o ChessBoard.o
 	$(CXX) $(CXXFLAGS) -Isrc $+ -o $@
+
 
 test: ChessBoardTests
 	./$+

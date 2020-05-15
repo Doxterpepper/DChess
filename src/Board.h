@@ -6,11 +6,19 @@
 namespace DChess {
   typedef const unsigned short COORD;
 
+  typedef struct {
+    COORD x;
+    COORD y;
+  } Coordinate;
+
   class Board {
     public:
-      virtual void move(COORD sourceX, COORD sourceY, COORD destX, COORD destY) = 0;
-      virtual Piece* at(COORD x, COORD y) = 0;
+      virtual void move(Coordinate source, Coordinate dest) = 0;
+      virtual Piece* at(Coordinate) = 0;
       virtual std::string str() = 0;
+
+      // Virtual destructor.
+      virtual ~Board() {}
   };
 }
 #endif
